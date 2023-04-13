@@ -7,8 +7,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
 
 
 class PostCrudController extends AbstractCrudController
@@ -34,7 +36,7 @@ class PostCrudController extends AbstractCrudController
             IdField::new('id')->onlyOnIndex(),
             AssociationField::new('category', 'Categoría'),
             TextField::new('title', 'Título'),
-            TextField::new('slug'),
+            SlugField::new('slug')->setTargetFieldName('title'),
             TextEditorField::new('content', 'Contenido de la publicación')->hideOnIndex(),
         ];
     }
